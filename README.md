@@ -1099,7 +1099,7 @@ translate(my_string)
 
 
 ```
-# Advanced Python - Biopython suite
+# Biopython suite
 # Sequence Annotation video pt. 1 
 # In terminal: pip install biopython
 
@@ -1178,7 +1178,7 @@ simple_seq_r.seq
 
 
 ```python
-# we can see that we added a seq, id, and description; we are storing sequences with annotation
+# We can see that we added a seq, id, and description; we are storing sequences with annotation
 simple_seq_r
 ```
 
@@ -1191,7 +1191,7 @@ simple_seq_r
 
 
 ```python
-simple_seq_r.annotations["evidence"] = "None. This is just an example"
+simple_seq_r.annotations["evidence"] = "None. This is just an example."
 ```
 
 
@@ -1199,7 +1199,7 @@ simple_seq_r.annotations["evidence"] = "None. This is just an example"
 print(simple_seq_r.annotations["evidence"])
 ```
 
-    None. This is just an example
+    None. This is just an example.
 
 
 
@@ -1216,8 +1216,8 @@ simple_seq_r
 
 
 ```python
-# scores for sequencing; letter annotations
-# scores for how confident the algorithm is for each call of the sequencing
+# Scores for sequencing; letter annotations
+# Scores for how confident the algorithm is for each call of the sequencing
 
 simple_seq_r.letter_annotations["phred_quality"] = [40, 40, 38, 30]
 ```
@@ -1232,7 +1232,7 @@ print(simple_seq_r.letter_annotations)
 
 
 ```python
-# Let's use a real fasta file:
+# Let's use a real FASTA file:
 # https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.fna
 
 
@@ -1300,7 +1300,7 @@ record.description
 
 
 ```python
-# we can pull an empty feature and see there is no annotation provided in file:
+# We can pull an empty feature and see there is no annotation provided in file:
 # 3 examples below
 record.dbxrefs
 ```
@@ -1338,8 +1338,8 @@ record.features
 
 
 ```python
-# pt 2 video
-# to get genbank file for data:
+# Sequence Annotations Pt. 2 
+# To get genbank file for data:
 # https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.gb
 ```
 
@@ -1458,7 +1458,7 @@ record.dbxrefs
 
 
 ```python
-# to see how many features there are
+# To see how many features there are:
 
 len(record.features)
 ```
@@ -1472,21 +1472,21 @@ len(record.features)
 
 
 ```python
-# to add "fuzzy" info about genes (not verified yet)
+# To add "fuzzy" info about genes (not verified yet):
 
 from Bio import SeqFeature
 ```
 
 
 ```python
-# example: if we think that the start of a gene is at 5 we create an object
+# Example: if we think that the start of a gene is at 5, we create an object:
 
 start_pos = SeqFeature.AfterPosition(5)
 ```
 
 
 ```python
-# If we think the end position is 
+# If we think we know what the end position is: 
 end_pos = SeqFeature.BetweenPosition(9, left = 8, right = 9)
 ```
 
@@ -1497,7 +1497,7 @@ end_pos = SeqFeature.BetweenPosition(9, left = 8, right = 9)
 
 
 ```python
-# if we think a postion is one of something (ambiguous)
+# If we think a postion is one of something (ambiguous):
 
 my_location = SeqFeature.SimpleLocation(start_pos, end_pos)
 ```
@@ -1536,7 +1536,7 @@ my_location.end
 
 
 ```python
-# to simplify
+# To simplify:
 
 int(my_location.end)
 ```
@@ -1562,7 +1562,7 @@ int(my_location.start)
 
 
 ```python
-# to pass the numbers to the verbs
+# To pass the numbers to the verbs:
 
 exact_location = SeqFeature.SimpleLocation(5,9)
 ```
@@ -1589,14 +1589,14 @@ exact_location.start
 
 
 ```python
-# pt 3 video
+# Sequence Annotations Pt. 3 
 
 from Bio.SeqRecord import SeqRecord
 ```
 
 
 ```python
-# to create a seq record for a protein (AA seq)
+# To create a seq record for a protein (AA seq):
 
 record = SeqRecord(Seq("MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSVITAVTFRGPSETHLDSMVGQALFGD"
                        "GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK"
@@ -1625,7 +1625,7 @@ print(record.format("fasta"))
 
 ```python
 print(record)
-# note that we did not add any annotated features
+# Note that we did not add any annotated features.
 ```
 
     ID: gi|14150838|gb|AAK54648.1|AF376133_1
@@ -1673,7 +1673,7 @@ len(record)
 
 
 ```python
-# To see the number of features
+# To see the number of features:
 
 len(record.features)
 ```
@@ -1688,7 +1688,7 @@ len(record.features)
 
 ```python
 print(record.features[20])
-# wee can see the 20th feature
+# We can see the 20th feature.
 ```
 
     type: gene
@@ -1722,7 +1722,7 @@ print(record.features[21])
 
 
 ```python
-# To subdivide the record (focus on a smaller part of the sequence)
+# To subdivide the record (focus on a smaller part of the sequence):
 
 sub_record = record[4300:4800]
 ```
@@ -1753,7 +1753,7 @@ len(sub_record.features)
 
 
 ```python
-# To see the first feature in the sub_record
+# To see the first feature in the sub_record:
 sub_record.features[0]
 ```
 
@@ -1837,7 +1837,7 @@ sub_record.dbxrefs
 
 ```python
 # To add to our annotations:
-# we have a linear piece of DNA
+# Example: We have a linear piece of DNA.
 
 sub_record.annotations["topology"] = "linear"
 ```
@@ -1892,7 +1892,7 @@ sub_record.description
 
 
 ```python
-# To update the description feature
+# To update the description feature:
 
 sub_record.description = 'Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, partial sequence'
 ```
@@ -1924,7 +1924,7 @@ print(sub_record.format("genbank")[:200] +"...")
 
 
 ```python
-# pt 4
+# Sequence Annotations Pt. 4
 # A circular genome:
 
 record = SeqIO.read("NC_005816.gb.txt", "genbank")
@@ -1992,8 +1992,8 @@ record.annotations.keys()
 
 
 ```python
-# to shift the genome to change where we start reading the genome:
-# because it's circular, where to start isn't specified
+# To shift the genome to change the start location for reading the genome:
+# Because it's circular, where to start isn't specified.
 
 shifted = record[2000:] + record[:2000]
 ```
@@ -2012,7 +2012,7 @@ shifted
 
 
 ```python
-# length hasn't been changed
+# The length hasn't been changed.
 
 len(shifted)
 ```
@@ -2026,7 +2026,7 @@ len(shifted)
 
 
 ```python
-# one less feature
+# One less feature:
 
 len(shifted.features)
 ```
@@ -2052,7 +2052,7 @@ shifted.annotations.keys()
 
 
 ```python
-# This feature was not preserved
+# This feature was not preserved:
 
 shifted.dbxrefs
 ```
@@ -2066,7 +2066,7 @@ shifted.dbxrefs
 
 
 ```python
-# To explicitly 
+# To explicitly shift:
 shifted.dbxrefs = record.dbxrefs[:]
 ```
 
@@ -2101,7 +2101,7 @@ shifted.annotations.keys()
 
 
 ```python
-# reverse complement
+# Reverse Complement
 # %s means to print the first value of a string
 # %i means to present the next four as integers
 
@@ -2113,7 +2113,7 @@ print("%s %i %i %i %i" % (record.id, len(record), len(record.features), len(reco
 
 
 ```python
-# if you run reverse complement on this sequence, are the annotations conserved?
+# If you run reverse complement on this sequence, are the annotations conserved?
 
 rc = record.reverse_complement(id = "Testing")
 ```
