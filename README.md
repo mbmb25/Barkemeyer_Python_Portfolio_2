@@ -3621,3 +3621,835 @@ else:
 ```python
 
 ```
+```python
+# OpenCV Pt. 1
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
+
+
+```python
+# install in terminal: 
+# pip install --upgrade pip setuptools wheel
+# pip install opencv-python
+
+
+import cv2
+```
+
+
+```python
+img = cv2.imread("Desktop/classroom/myfiles/Marty.jpg")
+```
+
+
+```python
+type(img)
+```
+
+
+
+
+    numpy.ndarray
+
+
+
+
+```python
+
+plt.imshow(img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f647a2fbbd0>
+
+
+
+
+![png](output_4_1.png)
+
+
+
+```python
+# rgb order needs to change for cv
+
+fix_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+```
+
+
+```python
+plt.imshow(img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f6474195590>
+
+
+
+
+![png](output_6_1.png)
+
+
+
+```python
+# to make image grayscale:
+
+img_gray = cv2.imread("Desktop/classroom/myfiles/Marty.jpg", cv2.IMREAD_GRAYSCALE)
+img_gray.shape
+```
+
+
+
+
+    (4032, 3024)
+
+
+
+
+```python
+plt.imshow(img_gray)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f64741103d0>
+
+
+
+
+![png](output_8_1.png)
+
+
+
+```python
+# cv2 looks at rgb images strangely, so we...
+
+plt.imshow(img_gray, cmap = "gray")
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f64740f3d50>
+
+
+
+
+![png](output_9_1.png)
+
+
+
+```python
+# to resize
+
+fix_img.shape
+```
+
+
+
+
+    (4032, 3024, 3)
+
+
+
+
+```python
+new_img = cv2.resize(fix_img,(1000, 400))
+plt.imshow(new_img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f6474075790>
+
+
+
+
+![png](output_11_1.png)
+
+
+
+```python
+new_img.shape
+```
+
+
+
+
+    (400, 1000, 3)
+
+
+
+
+```python
+# to change the image scale
+
+w_ratio = 0.5
+h_ratio = 0.5
+
+new_img = cv2.resize(fix_img, (0,0), fix_img, w_ratio, h_ratio)
+```
+
+
+```python
+plt.imshow(new_img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f646c4b2810>
+
+
+
+
+![png](output_14_1.png)
+
+
+
+```python
+new_img.shape
+```
+
+
+
+
+    (2016, 1512, 3)
+
+
+
+
+```python
+# to flip images
+
+flip_img = cv2.flip(fix_img, 0)
+```
+
+
+```python
+plt.imshow(flip_img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f646c4232d0>
+
+
+
+
+![png](output_17_1.png)
+
+
+
+```python
+# to flip down and backwards
+
+flip_img2 = cv2.flip(fix_img, -1)
+```
+
+
+```python
+plt.imshow(flip_img2)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f646c402c10>
+
+
+
+
+![png](output_19_1.png)
+
+
+
+```python
+# to save an image as a file
+
+type(fix_img)
+```
+
+
+
+
+    numpy.ndarray
+
+
+
+
+```python
+cv2.imwrite("Desktop/classroom/myfiles/Marty_fixed_image.jpg", flip_img)
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# python saves it as BGR despite CV2 showing it RGB
+```
+
+
+```python
+# OpenCV pt. 2
+# in terminal: pip install --upgrade pip setuptools wheel
+# pip install opencv-python
+import cv2
+
+```
+
+
+```python
+# image analysis for phenomics
+# converting to other color types
+```
+
+
+```python
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
+
+
+```python
+# to create the object
+
+img = cv2.imread("Marty.jpg")
+```
+
+
+```python
+# to view it
+
+plt.imshow(img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f733a6c3a50>
+
+
+
+
+![png](output_27_1.png)
+
+
+
+```python
+# to create a new object of same image but with corrected color
+
+img1 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+```
+
+
+```python
+# NOW TO VIEW with the new color fix
+
+plt.imshow(img1)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f7338670c50>
+
+
+
+
+![png](output_29_1.png)
+
+
+
+```python
+# to convert to an hsv (hue saturation value((if using an older digital image)
+img2 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+```
+
+
+```python
+plt.imshow(img2)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73386576d0>
+
+
+
+
+![png](output_31_1.png)
+
+
+
+```python
+# to convert to hls (hue saturation light)
+img3 = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
+```
+
+
+```python
+plt.imshow(img3)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73385bfe10>
+
+
+
+
+![png](output_33_1.png)
+
+
+
+```python
+# another image example
+img1 = cv2.imread("Cleo.jpg")
+```
+
+
+```python
+img2 = cv2.imread("Marty.jpg")
+```
+
+
+```python
+plt.imshow(img1)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73383d3b90>
+
+
+
+
+![png](output_36_1.png)
+
+
+
+```python
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+```
+
+
+```python
+plt.imshow(img1)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73383475d0>
+
+
+
+
+![png](output_38_1.png)
+
+
+
+```python
+plt.imshow(img2)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73382a7d90>
+
+
+
+
+![png](output_39_1.png)
+
+
+
+```python
+# why are we doing this?
+
+# first let's resize
+# then we will make them transparent and blended
+# very important in microscopy
+
+img1 = cv2.resize(img1, (1200,1200))
+img2 = cv2.resize(img2, (1200, 1200))
+```
+
+
+```python
+alpha = 0.5
+beta = 0.5
+```
+
+
+```python
+blended =cv2.addWeighted(img1, alpha, img2, beta, gamma=0)
+```
+
+
+```python
+plt.imshow(blended)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f733829b750>
+
+
+
+
+![png](output_43_1.png)
+
+
+
+```python
+# important for looking at fluorescent image overlay
+# example: take pictures (cells) of images with different filters
+# cells stained nucleus with DAPI, another with GFP of another cell marker, etc.
+# then, overlap them to view all stains together and provides a better image for viewing cells
+```
+
+
+```python
+# alpha is how transparent each level is (alpha+beta=1)
+# fifth aregument is always gamma
+
+alpha = 0.8
+beta = 0.2
+
+blended1 = cv2.addWeighted(img1, alpha, img2, beta, 0)
+```
+
+
+```python
+plt.imshow(blended1)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f73381ffa90>
+
+
+
+
+![png](output_46_1.png)
+
+
+
+```python
+img1 = cv2.imread("Cleo.jpg")
+```
+
+
+```python
+img2 = cv2.imread("Marty.jpg")
+```
+
+
+```python
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+
+img1 = cv2.resize(img1, (600, 600))
+
+```
+
+
+```python
+large_img = img2
+small_img = img1
+
+# how far off x and y axis photos are moved
+
+x_offset = 0
+y_offset = 0
+
+x_end = x_offset + small_img.shape[1]
+
+y_end = y_offset + small_img.shape[0]
+
+large_img[y_offset:y_end, x_offset:x_end] = small_img
+
+plt.imshow(large_img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f733815b790>
+
+
+
+
+![png](output_50_1.png)
+
+
+
+```python
+# OpenCV pt. 3
+# thresholding and image processing for phenomics (finding phenotypes)
+# images from: https://github.com/worklifesg/Python-for-Computer-Vision-with-OpenCV-and-Deep-Learning/tree/main/3.%20Image%20Processing
+
+import cv2
+```
+
+
+```python
+import matplotlib.pyplot as plt
+%matplotlib inline
+```
+
+
+```python
+img = cv2.imread("rainbow.jpg")
+```
+
+
+```python
+plt.imshow(img)
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a3d75c10>
+
+
+
+
+![png](output_54_1.png)
+
+
+
+```python
+img = cv2.imread("rainbow.jpg", 0)
+```
+
+
+```python
+plt.imshow(img, cmap = 'gray')
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a33854d0>
+
+
+
+
+![png](output_56_1.png)
+
+
+
+```python
+# to change half of the image color (255/2~127)
+# we will set a threshold, half (the lighter colors) will turn white, the other half
+# (darker colors) turn black
+ret1, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+```
+
+
+```python
+ret1
+```
+
+
+
+
+    127.0
+
+
+
+
+```python
+plt.imshow(thresh1, cmap = 'gray')
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a2aec2d0>
+
+
+
+
+![png](output_59_1.png)
+
+
+
+```python
+# to inverse the limits
+# instead of binary, we will use trunc which applies an adaptive threshold
+img2 = cv2.imread('rainbow.jpg', 0)
+ret1, thresh1 = cv2.threshold(img2, 127, 255, cv2.THRESH_TRUNC)
+plt.imshow(thresh1, cmap = "gray")
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a29bea10>
+
+
+
+
+![png](output_60_1.png)
+
+
+
+```python
+# another
+img3 = cv2.imread("rainbow.jpg", 0)
+ret1, thresh1 = cv2.threshold(img3, 127, 255, cv2.THRESH_TOZERO)
+plt.imshow(thresh1, cmap = "gray")
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a29205d0>
+
+
+
+
+![png](output_61_1.png)
+
+
+
+```python
+img_r = cv2.imread("crossword.jpg", 0)
+
+```
+
+
+```python
+plt.imshow(img_r, cmap = "gray")
+```
+
+
+
+
+    <matplotlib.image.AxesImage at 0x7f05a2846990>
+
+
+
+
+![png](output_63_1.png)
+
+
+
+```python
+# let's create/define a function: show_pic
+
+def show_pic(img):
+    fig = plt.figure(figsize = (15, 15))
+    ax = fig.add_subplot(111)
+    ax.imshow(img, cmap = "gray")
+```
+
+
+```python
+show_pic(img_r)
+```
+
+
+![png](output_65_0.png)
+
+
+
+```python
+# to keep all of the black text and make gray white
+# not the best result here
+ret, th1 = cv2.threshold(img_r, 127, 255, cv2.THRESH_BINARY)
+show_pic(th1)
+```
+
+
+![png](output_66_0.png)
+
+
+
+```python
+# let's try changing the threshold to see if it improves the img
+
+ret, th1 = cv2.threshold(img_r, 200, 255, cv2.THRESH_BINARY)
+show_pic(th1)
+```
+
+
+![png](output_67_0.png)
+
+
+
+```python
+# let's try another
+th2 = cv2.adaptiveThreshold(img_r, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11,8)
+```
+
+
+```python
+# above: adaptive threshold - add source, max value, adaptive method (adaptive_thresh_mean), threshold type (binary), and block size (11,8)
+# we see boxes are just outlined
+show_pic(th2)
+```
+
+
+![png](output_69_0.png)
+
+
+
+```python
+# let's try blending
+# we will layer two of the images that we changed previously
+# we see the outline and a dark gray fill
+blended = cv2.addWeighted(src1 = th1, alpha = 0.6,
+                         src2 = th2, beta = 0.4, gamma = 0)
+
+show_pic(blended)
+```
+
+
+![png](output_70_0.png)
+
+
+
+```python
+th3 = cv2.adaptiveThreshold(img_r, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 8)
+
+blended = cv2.addWeighted(src1 = th1, alpha = 0.6,
+                           src2 = th3, beta = 0.4, gamma = 0)
+
+show_pic(blended)
+# this does not look much different, but removed background
+```
+
+
+![png](output_71_0.png)
+
+
+
+```python
+
+```
