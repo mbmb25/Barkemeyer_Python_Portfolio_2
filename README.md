@@ -1,5 +1,5 @@
 # Barkemeyer_Python_Portfolio_2
-This is the portfoltio of python code that I learned in my Advanced Python course.
+This is the portfolio of python code that I learned in my Advanced Python course.
 ```python
 # Sequence Objects
 # In terminal: pip install biopython
@@ -36,7 +36,7 @@ print(len(my_seq))
 
 
 ```python
-# we can access the different positions in seq objects:
+# We can access the different positions in seq objects:
 print(my_seq[0])
 ```
 
@@ -61,7 +61,7 @@ print(my_seq[2])
 
 
 ```python
-# We can do a .count (does not count overlapping)
+# We can do a .count (does not count overlapping):
 
 Seq("AAAA").count("AA")
 ```
@@ -75,7 +75,7 @@ Seq("AAAA").count("AA")
 
 
 ```python
-# another example
+# Another example:
 my_seq = "GATACGATTGCATGCAGCATAAACGTA"
 ```
 
@@ -93,7 +93,7 @@ len(my_seq)
 
 
 ```python
-# To find the count of Gs in the sequence
+# To find the count of Gs in the sequence:
 my_seq.count("G")
 ```
 
@@ -120,9 +120,9 @@ my_seq.count("G")
 
 
 ```python
-# these calculations are already builin in biopython:
+# These calculations are already built in biopython:
 # Seq package
-# Seq() makes something a seq object which allows us to perform biological applications
+# Seq() makes something a seq object which allows us to perform biological applications.
 
 from Bio.SeqUtils import gc_fraction
 ```
@@ -146,7 +146,7 @@ gc_fraction(my_seq)
 
 
 ```python
-# we can slice sequences into multiple parts:
+# We can slice sequences into multiple parts.
 # To cut out every 3rd nucleotide and choose our start position:
 
 my_seq[0::3]
@@ -216,7 +216,7 @@ str(my_seq)
 ```python
 fasta_format_string = ">Name\n%s\n" % my_seq
 
-# Here we use >Name as a placeholder to label our seq
+# Here we use >Name as a placeholder to label our seq:
 # > is fasta format
 ```
 
@@ -232,7 +232,7 @@ print(fast_format_string)
 
 
 ```python
-# Concatenating (adding two scripts together)
+# Concatenating (adding two scripts together):
 
 seq1 = Seq("ACGT")
 seq2 = Seq("AACCGG")
@@ -264,22 +264,22 @@ seq2 + seq1
 
 
 ```python
-# manipulating strings
+# Manipulating Strings
 
 contigs = [Seq("ATG"), Seq("ATCCCG"), Seq("TTTGCA")]
 ```
 
 
 ```python
-# N is where sequencer was not confident in nucleotide id
-# N can be ACT or G
+# N is where sequencer was not confident in nucleotide id.
+# N can be ACT or G.
 spacer = Seq("N" * 10)
 ```
 
 
 ```python
-# We take the spacer object and join it with contigs
-# It puts 10 Ns to join each one
+# We take the spacer object and join it with contigs.
+# It puts 10 Ns to join each one.
 
 spacer.join(contigs)
 ```
@@ -293,14 +293,14 @@ spacer.join(contigs)
 
 
 ```python
-# case sensitivity issue:
+# Case sensitivity issue:
 
 dna_seq = Seq("acgtAcGT")
 ```
 
 
 ```python
-# to fix:
+# To fix:
 
 dna_seq
 ```
@@ -314,7 +314,7 @@ dna_seq
 
 
 ```python
-# to make our dna_seq all uppercase:
+# To make our dna_seq all uppercase:
 
 dna_seq.upper()
 ```
@@ -328,7 +328,7 @@ dna_seq.upper()
 
 
 ```python
-# to make it lowercase:
+# To make it lowercase:
 
 dna_seq.lower()
 ```
@@ -347,11 +347,11 @@ dna_seq = dna_seq.upper()
 
 
 ```python
-# if we want to find a certain seq
+# If we want to find a certain seq:
 
 "gtac" in dna_seq
 
-# we get false because we asked for lowercase but our object is in uppercase
+# We get false because we asked for lowercase but our object is in uppercase.
 ```
 
 
@@ -375,7 +375,7 @@ dna_seq = dna_seq.upper()
 
 
 ```python
-# in biopython
+# In biopython
 
 my_seq = Seq("GATCCATTTGGCCATGCATGACCCGATCAAATTGC")
 ```
@@ -396,7 +396,7 @@ my_seq.complement()
 
 
 ```python
-# reverse complement
+# Reverse Complement
 
 my_seq.reverse_complement()
 ```
@@ -410,12 +410,11 @@ my_seq.reverse_complement()
 
 
 ```python
-# a protein example:
+# A protein example:
 
 protein_seq = Seq("EVRNAK")
 protein_seq.complement()
 
-# there are ambiguity codes for nucleotides
 ```
 
 
@@ -427,7 +426,7 @@ protein_seq.complement()
 
 
 ```python
-# To create an object for coding dna and its template
+# To create an object for coding DNA and its template:
 
 coding_dna = Seq("ACGCAGTTCCAAGGTTAGCAGATGACGTAAATTGCAT")
 ```
@@ -470,7 +469,7 @@ messenger_rna = coding_dna.transcribe()
 ```python
 messenger_rna
 
-# we see that python took Ts and changed them to Us with transcribe
+# We see that python took Ts and changed them to Us with 'transcribe'.
 ```
 
 
@@ -484,7 +483,7 @@ messenger_rna
 ```python
 template_dna.reverse_complement().transcribe()
 
-# gives same result bc template is reverse of coding_dna
+# Gives the same result bc template is reverse of coding_dna.
 ```
 
 
@@ -496,11 +495,11 @@ template_dna.reverse_complement().transcribe()
 
 
 ```python
-# reverse transcription example
+# Reverse transcription example
 
 messenger_rna.back_transcribe()
 
-# we took coding changed it to messenger rna and then back to coding with back_transcribe
+# We took coding changed it to messenger RNA and then back to coding with back_transcribe
 ```
 
 
@@ -524,11 +523,11 @@ messenger_rna
 
 
 ```python
-# to translate messenger_rna into amino acids
+# To translate messenger_rna into amino acids:
 
 messenger_rna.translate()
 
-# we get * for stop codons
+# We get * for stop codons
 # premature stop codon
 ```
 
@@ -541,12 +540,10 @@ messenger_rna.translate()
 
 
 ```python
-# Seq objects pt 3
-
-# continuing with translation and proteins
-
-# we can specify the codon tables to determine if nuclear or mintochondrial genome codons
-# to translate in mito genome
+# Seq Objects Pt. 3
+# Continuing with translation and proteins
+# We can specify the codon tables to determine if nuclear or mintochondrial genome codons.
+# To translate in mitochondrial genome codons:
 
 coding_dna.translate(table="Vertebrate Mitochondrial")
 ```
@@ -560,7 +557,7 @@ coding_dna.translate(table="Vertebrate Mitochondrial")
 
 
 ```python
-# to translate up until the first in frame stop codon, and then stop
+# To translate up until the first in frame stop codon, and then stop:
 
 coding_dna.translate(to_stop = True)
 ```
@@ -574,7 +571,7 @@ coding_dna.translate(to_stop = True)
 
 
 ```python
-# we get the same thing with this
+# We get the same thing with this
 
 coding_dna.translate(table=2, to_stop=True)
 ```
@@ -602,8 +599,8 @@ coding_dna.translate(table=2, stop_symbol = "!")
 
 
 ```python
-# to handle a coding sequence with a non-standard start codon (like in bacteria) with a complete cds
-# a long nucleotide seq:
+# To handle a coding sequence with a non-standard start codon (like in bacteria) with a complete cds:
+# A long nucleotide seq:
 
 gene = Seq("GTGAAAAAGATGCAATCTATCGTACTCGCACTTTCCCTGGTTTCTGGTTCTCCCATGGCAGCACAGGCTGCGGAAATTACGTTAGTCCCGTCAGTAAAATTACAGATAGGCGATCGTGATAATCGTGGCTATTACTGGGATGGAGGTCACTGGCGCGACCACGGCTGGAAACAACATTATGAATGGCGAGGCAATCGCTGGCACCTACACGGACCGCCGCCACCGCCGCGCCACCATAAGAAAGCTCCTCATGATCATCACGGCGGTCATGGTCCAGGCAAACATCACCGCTAA")
 ```
@@ -659,7 +656,7 @@ gene.translate(table = "Bacterial", to_stop = True)
 
 ```python
 # To tell biopython that this is a complete cds and there will be a different start codon 
-# than methionine
+# than methionine:
 
 gene.translate(table = "Bacterial", cds = True)
 ```
@@ -777,14 +774,14 @@ mito_table.start_codons
 
 
 ```python
-# Seq comparisons are difficult to determine if two sequences are truly equal
+# Seq comparisons are difficult to determine if two sequences are truly equal.
 
 seq1 = Seq("ACGT")
 ```
 
 
 ```python
-# ask the question two ways:
+# You can ask the question two ways:
 
 "ACGT" == seq1
 ```
@@ -810,10 +807,10 @@ seq1 == "ACGT"
 
 
 ```python
-# if length of seq is known but not the number of letters
-# we can create an arugment with unknown nucleotides but 10 total
-# this might be useful to create an object that we can fill later
-# or if we need to just compare lengths of genes
+# If length of seq is known but not the number of letters,
+# we can create an arugment with unknown nucleotides but 10 total.
+# This might be useful to create an object that we can fill later
+# or if we need to just compare lengths of genes.
 
 unknown_seq = Seq(None, 10)
 
@@ -845,25 +842,25 @@ len(unknown_seq)
 
 
 ```python
-# Seq Objects pt 4
+# Seq Objects Pt. 4
 ```
 
 
 ```python
-# a sequence from a seq alignment printout of various organisms for comparison
-# human chromsome example:
-# The first number is the start postion, then the seq, and legnth of chromosome
+# A sequence from a seq alignment printout of various organisms for comparison
+# Human chromsome example
+# The first number is the start postion, then the seq, and legnth of chromosome.
 
 seq = Seq({117512683:"TTGAAAACCTGAATGTGAGAGTCAGTCAAGGATAGT"}, length = 159345973)
 ```
 
 
 ```python
-# to find the seq from 1000-1020
+# To find the seq from 1000-1020:
 
 seq[1000:1020]
 
-# this seq is not defined in our sequence
+# This seq is not defined in our sequence:
 ```
 
 
@@ -875,7 +872,7 @@ seq[1000:1020]
 
 
 ```python
-# to find the nucleotides at specified positions:
+# To find the nucleotides at specified positions:
 
 seq[117512690:117512700]
 ```
@@ -889,7 +886,7 @@ seq[117512690:117512700]
 
 
 ```python
-# from a postion to the end:
+# From a postion to the end:
 
 seq[117512670:]
 ```
@@ -913,7 +910,7 @@ undefined_seq = Seq(None, length = 10)
 
 
 ```python
-# To put them together
+# To put them together:
 
 seq + undefined_seq + seq
 ```
@@ -927,9 +924,9 @@ seq + undefined_seq + seq
 
 
 ```python
-# important to not change the sequence data
-# we are not able to change our data (my_seq) as seen in above error
-# data is immutable in python
+# It is important to not change the sequence data.
+# We are not able to change our data (my_seq) as seen in above error.
+# Data is immutable in python.
 
 my_seq = Seq("AGTCAGGGGAACCCCTTTTTTTTAGCAGAGTCGAAGACTGAAC")
 ```
@@ -955,7 +952,7 @@ my_seq[5] = "G"
 
 
 ```python
-# to create a mutable seq
+# To create a mutable seq:
 
 from Bio.Seq import MutableSeq
 ```
@@ -972,7 +969,7 @@ mutable_seq[5] = "C"
 
 
 ```python
-# we have changed the fifth position
+# We have changed the fifth position.
 
 mutable_seq
 ```
@@ -986,7 +983,7 @@ mutable_seq
 
 
 ```python
-# To remove the first T
+# To remove the first T:
 
 mutable_seq.remove("T")
 ```
@@ -1022,7 +1019,7 @@ mutable_seq
 
 
 ```python
-# to change gene and then make immutable again
+# To change the gene sequence and then make immutable again:
 
 new_seq = Seq(mutable_seq)
 ```
@@ -1099,8 +1096,8 @@ translate(my_string)
 
 
 ```
-# Biopython suite
-# Sequence Annotation video pt. 1 
+# Biopython Suite
+# Sequence Annotation Pt. 1 
 # In terminal: pip install biopython
 
 from Bio.SeqRecord import SeqRecord
@@ -1119,7 +1116,7 @@ from Bio.Seq import Seq
 
 
 ```python
-# first create a seq object:
+# First, create a seq object:
 
 simple_seq = Seq("GATC")
 ```
@@ -1131,7 +1128,7 @@ simple_seq_r = SeqRecord(simple_seq)
 
 
 ```python
-# We see that we created it, but it is blank
+# We see that we created it, but it is blank.
 simple_seq_r
 ```
 
@@ -1178,7 +1175,7 @@ simple_seq_r.seq
 
 
 ```python
-# We can see that we added a seq, id, and description; we are storing sequences with annotation
+# We can see that we added a seq, id, and description; we are storing sequences with annotation.
 simple_seq_r
 ```
 
@@ -1263,7 +1260,7 @@ record
 
 ```python
 # To pull pieces of information from the file:
-# 3 examples below
+# 3 examples below:
 record.seq
 ```
 
@@ -1301,7 +1298,7 @@ record.description
 
 ```python
 # We can pull an empty feature and see there is no annotation provided in file:
-# 3 examples below
+# 3 examples below:
 record.dbxrefs
 ```
 
