@@ -3674,7 +3674,7 @@ plt.imshow(img)
 
 
 ```python
-# rgb order needs to change for cv
+# RGB order needs to change for CV
 
 fix_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 ```
@@ -3697,7 +3697,7 @@ plt.imshow(img)
 
 
 ```python
-# to make image grayscale:
+# To make image grayscale:
 
 img_gray = cv2.imread("Desktop/classroom/myfiles/Marty.jpg", cv2.IMREAD_GRAYSCALE)
 img_gray.shape
@@ -3728,7 +3728,7 @@ plt.imshow(img_gray)
 
 
 ```python
-# cv2 looks at rgb images strangely, so we...
+# CV2 looks at RGB images strangely, so we...
 
 plt.imshow(img_gray, cmap = "gray")
 ```
@@ -3746,7 +3746,7 @@ plt.imshow(img_gray, cmap = "gray")
 
 
 ```python
-# to resize
+# To resize:
 
 fix_img.shape
 ```
@@ -3789,7 +3789,7 @@ new_img.shape
 
 
 ```python
-# to change the image scale
+# To change the image scale:
 
 w_ratio = 0.5
 h_ratio = 0.5
@@ -3827,7 +3827,7 @@ new_img.shape
 
 
 ```python
-# to flip images
+# To flip images:
 
 flip_img = cv2.flip(fix_img, 0)
 ```
@@ -3850,7 +3850,7 @@ plt.imshow(flip_img)
 
 
 ```python
-# to flip down and backwards
+# To flip down and backwards:
 
 flip_img2 = cv2.flip(fix_img, -1)
 ```
@@ -3873,7 +3873,7 @@ plt.imshow(flip_img2)
 
 
 ```python
-# to save an image as a file
+# To save an image as a file:
 
 type(fix_img)
 ```
@@ -3899,12 +3899,12 @@ cv2.imwrite("Desktop/classroom/myfiles/Marty_fixed_image.jpg", flip_img)
 
 
 ```python
-# python saves it as BGR despite CV2 showing it RGB
+# Python saves it as BGR despite CV2 showing it RGB.
 ```
 
 
 ```python
-# OpenCV pt. 2
+# OpenCV Pt. 2
 # in terminal: pip install --upgrade pip setuptools wheel
 # pip install opencv-python
 import cv2
@@ -3913,8 +3913,8 @@ import cv2
 
 
 ```python
-# image analysis for phenomics
-# converting to other color types
+# Image Analysis for Phenomics
+# Converting to Other Color Cypes
 ```
 
 
@@ -3925,14 +3925,14 @@ import matplotlib.pyplot as plt
 
 
 ```python
-# to create the object
+# To create the object:
 
 img = cv2.imread("Marty.jpg")
 ```
 
 
 ```python
-# to view it
+# To view it:
 
 plt.imshow(img)
 ```
@@ -3950,14 +3950,14 @@ plt.imshow(img)
 
 
 ```python
-# to create a new object of same image but with corrected color
+# To create a new object of same image but with corrected color:
 
 img1 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 ```
 
 
 ```python
-# NOW TO VIEW with the new color fix
+# To view with the new color fix:
 
 plt.imshow(img1)
 ```
@@ -3975,7 +3975,7 @@ plt.imshow(img1)
 
 
 ```python
-# to convert to an hsv (hue saturation value((if using an older digital image)
+# To convert to an HSV (hue saturation value)(if using an older digital image)
 img2 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 ```
 
@@ -3997,7 +3997,7 @@ plt.imshow(img2)
 
 
 ```python
-# to convert to hls (hue saturation light)
+# To convert to HLS (hue saturation light)
 img3 = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
 ```
 
@@ -4019,7 +4019,7 @@ plt.imshow(img3)
 
 
 ```python
-# another image example
+# Another image example
 img1 = cv2.imread("Cleo.jpg")
 ```
 
@@ -4084,11 +4084,11 @@ plt.imshow(img2)
 
 
 ```python
-# why are we doing this?
+# Ahy are we doing this?
 
-# first let's resize
-# then we will make them transparent and blended
-# very important in microscopy
+# First, let's resize.
+# Then, we will make the images transparent and blended,
+# which is very important in microscopy.
 
 img1 = cv2.resize(img1, (1200,1200))
 img2 = cv2.resize(img2, (1200, 1200))
@@ -4123,16 +4123,16 @@ plt.imshow(blended)
 
 
 ```python
-# important for looking at fluorescent image overlay
-# example: take pictures (cells) of images with different filters
+# Important for looking at fluorescent image overlay
+# Xxample: take pictures (cells) of images with different filters;
 # cells stained nucleus with DAPI, another with GFP of another cell marker, etc.
-# then, overlap them to view all stains together and provides a better image for viewing cells
+# Then, overlap them to view all stains together, which provides a better image for viewing cells.
 ```
 
 
 ```python
 # alpha is how transparent each level is (alpha+beta=1)
-# fifth aregument is always gamma
+# Note: The fifth argument is always gamma.
 
 alpha = 0.8
 beta = 0.2
@@ -4180,7 +4180,7 @@ img1 = cv2.resize(img1, (600, 600))
 large_img = img2
 small_img = img1
 
-# how far off x and y axis photos are moved
+# To see how far off x and y axis photos are moved:
 
 x_offset = 0
 y_offset = 0
@@ -4207,9 +4207,9 @@ plt.imshow(large_img)
 
 
 ```python
-# OpenCV pt. 3
-# thresholding and image processing for phenomics (finding phenotypes)
-# images from: https://github.com/worklifesg/Python-for-Computer-Vision-with-OpenCV-and-Deep-Learning/tree/main/3.%20Image%20Processing
+# OpenCV Pt. 3
+# Thresholding and Image Processing for Phenomics (finding phenotypes)
+# Images from: https://github.com/worklifesg/Python-for-Computer-Vision-with-OpenCV-and-Deep-Learning/tree/main/3.%20Image%20Processing
 
 import cv2
 ```
@@ -4264,9 +4264,9 @@ plt.imshow(img, cmap = 'gray')
 
 
 ```python
-# to change half of the image color (255/2~127)
-# we will set a threshold, half (the lighter colors) will turn white, the other half
-# (darker colors) turn black
+# To change half of the image color (255/2~127),
+# we will set a threshold; half (the lighter colors) will turn white, the other half
+# (darker colors) will turn black.
 ret1, thresh1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 ```
 
@@ -4300,8 +4300,8 @@ plt.imshow(thresh1, cmap = 'gray')
 
 
 ```python
-# to inverse the limits
-# instead of binary, we will use trunc which applies an adaptive threshold
+# To inverse the limits:
+# Instead of binary, we will use trunc which applies an adaptive threshold.
 img2 = cv2.imread('rainbow.jpg', 0)
 ret1, thresh1 = cv2.threshold(img2, 127, 255, cv2.THRESH_TRUNC)
 plt.imshow(thresh1, cmap = "gray")
@@ -4320,7 +4320,7 @@ plt.imshow(thresh1, cmap = "gray")
 
 
 ```python
-# another
+# Another example
 img3 = cv2.imread("rainbow.jpg", 0)
 ret1, thresh1 = cv2.threshold(img3, 127, 255, cv2.THRESH_TOZERO)
 plt.imshow(thresh1, cmap = "gray")
@@ -4361,7 +4361,7 @@ plt.imshow(img_r, cmap = "gray")
 
 
 ```python
-# let's create/define a function: show_pic
+# Let's create/define a function: show_pic
 
 def show_pic(img):
     fig = plt.figure(figsize = (15, 15))
@@ -4380,8 +4380,8 @@ show_pic(img_r)
 
 
 ```python
-# to keep all of the black text and make gray white
-# not the best result here
+# To keep all of the black text and make gray turn white:
+# (not the best result here)
 ret, th1 = cv2.threshold(img_r, 127, 255, cv2.THRESH_BINARY)
 show_pic(th1)
 ```
@@ -4392,7 +4392,7 @@ show_pic(th1)
 
 
 ```python
-# let's try changing the threshold to see if it improves the img
+# Let's try changing the threshold to see if it improves the img.
 
 ret, th1 = cv2.threshold(img_r, 200, 255, cv2.THRESH_BINARY)
 show_pic(th1)
@@ -4404,14 +4404,14 @@ show_pic(th1)
 
 
 ```python
-# let's try another
+# Let's try another.
 th2 = cv2.adaptiveThreshold(img_r, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11,8)
 ```
 
 
 ```python
-# above: adaptive threshold - add source, max value, adaptive method (adaptive_thresh_mean), threshold type (binary), and block size (11,8)
-# we see boxes are just outlined
+# See above: adaptive threshold - add source, max value, adaptive method (adaptive_thresh_mean), threshold type (binary), and block size (11,8)
+# We see boxes are just outlined.
 show_pic(th2)
 ```
 
@@ -4421,9 +4421,9 @@ show_pic(th2)
 
 
 ```python
-# let's try blending
-# we will layer two of the images that we changed previously
-# we see the outline and a dark gray fill
+# Let's try blending.
+# We will layer two of the images that we changed previously.
+# We will see the outline and a dark gray fill.
 blended = cv2.addWeighted(src1 = th1, alpha = 0.6,
                          src2 = th2, beta = 0.4, gamma = 0)
 
@@ -4442,7 +4442,7 @@ blended = cv2.addWeighted(src1 = th1, alpha = 0.6,
                            src2 = th3, beta = 0.4, gamma = 0)
 
 show_pic(blended)
-# this does not look much different, but removed background
+# This does not look much different, but removed the background.
 ```
 
 
@@ -4454,7 +4454,7 @@ show_pic(blended)
 
 ```
 ```python
-# CV Detecting corners
+# CV Detecting Corners
 # install in terminal: 
 # pip install --upgrade pip setuptools wheel
 # pip install opencv-python
@@ -4462,8 +4462,7 @@ show_pic(blended)
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-%matplotlib inline 
-#(JN code so your plots appear inline in the notebook)
+%matplotlib inline #(JN code so your plots appear inline in the notebook)
 ```
 
 
@@ -4478,7 +4477,7 @@ import matplotlib.pyplot as plt
 
 
 ```python
-# to read the image and convert the colors (since it's a jpg)
+# To read the image and convert the colors (since it's a jpg):
 flat_chess = cv2.imread("Desktop/classroom/myfiles/Python_2/Chessboard_green.jpg")
 flat_chess = cv2.cvtColor(flat_chess, cv2.COLOR_BGR2RGB)
 plt.imshow(flat_chess)
@@ -4549,9 +4548,9 @@ plt.imshow(gray_real_chess, cmap = 'gray')
 
 
 ```python
-# corner detection
-# block size is the neightnorhood size
-# k size is the apperture parameter 
+# Corner Detection
+# Block size is the neighborhood size.
+# k size is the apperture parameter. 
 gray = np.float32(gray_flat_chess)
 dst = cv2.cornerHarris(src = gray, blockSize =2, ksize= 3, k = 0.04)
 
@@ -4560,10 +4559,10 @@ dst = cv2.dilate(dst, None)
 
 
 ```python
-# use dst corner detection to look at flat chessboard and detect corners with red dots
+# Use dst corner detection to look at flat chessboard and detect corners with red dots.
 flat_chess[dst>0.01*dst.max()] = [255, 0, 0]
-# this says to use all read in the command because 255 is in the red position, and the zeroes
-# are in the blue and green positions
+# This says to use all red in the command because 255 is in the red position, and the zeroes
+# are in the blue and green positions.
 
 plt.imshow(flat_chess)
 ```
@@ -4581,7 +4580,7 @@ plt.imshow(flat_chess)
 
 
 ```python
-# let's introduce some noise with the real chess board
+# Let's introduce some noise with the real chess board.
 
 gray = np.float32(gray_real_chess)
 dst = cv2.cornerHarris(src = gray, blockSize = 2, ksize=3, k=0.04)
@@ -4605,9 +4604,9 @@ plt.imshow(real_chess)
 
 
 ```python
-# another corner detection: shi-tomasi
-# to detect max level of parameters (64) quality level(0,01), min distance (10)
-# create the corners algorithm
+# Another way for corner detection: shi-tomasi
+# To detect max level of parameters (64) quality level(0,01), min distance (10).
+# First, create the corners algorithm:
 corners = cv2.goodFeaturesToTrack(gray_flat_chess, 64, 0.01, 10)
 
 ```
@@ -4629,13 +4628,13 @@ for i in corners:
 
 
 ```python
-# let's apply to the real chess board
+# Let's apply it to the real chess board:
 
 corners = cv2.goodFeaturesToTrack(gray_real_chess, 100, 0.01, 10)
 
 corners = np.int0(corners)
 
-# let's change the corner detection color
+# Let's change the corner detection color:
 
 for i in corners:
     x, y = i.ravel()
@@ -4643,7 +4642,7 @@ for i in corners:
     
     plt.imshow(real_chess)
     
-# we detect less green than red, more conservative than Harris
+# We detect less green than red, which is more conservative than Harris.
 ```
 
 
@@ -4655,7 +4654,7 @@ for i in corners:
 
 ```
 ```python
-# Edge detection
+# Edge Detection
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -4683,7 +4682,7 @@ plt.imshow(img)
 
 
 ```python
-# we set threshold at half (medium)
+# We set threshold at half (medium)
 edges = cv2.Canny(image = img, threshold1 = 127, threshold2 = 127)
 plt.imshow(edges)
 ```
@@ -4715,8 +4714,8 @@ med_value
 
 
 ```python
-# to lower threshold,  0 or 70% of med_value (whichever is lower)
-# to increase threshold, 255 or 30% above med_value (whichever is higher)
+# To lower threshold,  0 or 70% of med_value (whichever is lower).
+# To increase threshold, 255 or 30% above med_value (whichever is higher).
 lower = int(max(0, 0.7*med_value))
 upper = int(min(255, 1.3*med_value))
 
@@ -4741,7 +4740,7 @@ plt.imshow(edges)
 edges = cv2.Canny(image = img, threshold1 = lower, threshold2=upper+100)
 
 plt.imshow(edges)
-# this one looks worse
+# This one looks worse
 ```
 
 
@@ -4757,8 +4756,8 @@ plt.imshow(edges)
 
 
 ```python
-# Let's try again
-# Blurring as a solution (taking away teh starkness of the pixels helps with edge detection)
+# Let's try again.
+# Blurring as a solution to this problem (takes away the starkness of the pixels and helps with edge detection).
 
 blurred_img = cv2.blur(img, ksize = (5,5))
 
@@ -4767,7 +4766,7 @@ edges = cv2.Canny(image=blurred_img,
                  threshold2 = upper)
 
 plt.imshow(edges)
-# looks better?
+# Looks better?
 ```
 
 
@@ -4783,7 +4782,7 @@ plt.imshow(edges)
 
 
 ```python
-# try increasing the kernel size
+# Let's try increasing the kernel size:
 blurred_img = cv2.blur(img, ksize = (7,7))
 
 edges = cv2.Canny(image=blurred_img,
@@ -4791,7 +4790,7 @@ edges = cv2.Canny(image=blurred_img,
                  threshold2 = upper)
 
 plt.imshow(edges)
-# not better
+# It does not look better.
 ```
 
 
@@ -4807,7 +4806,7 @@ plt.imshow(edges)
 
 
 ```python
-# increase upper threshold limit and change kernel size
+# Let's try increasing upper threshold limit and changing kernel size:
 
 blurred_img = cv2.blur(img, ksize = (2,2))
 
@@ -4816,7 +4815,7 @@ edges = cv2.Canny(image=blurred_img,
                  threshold2 = upper+60)
 
 plt.imshow(edges)
-# not better, poor img choice (too busy)
+# Not better, poor img choice (too busy)
 ```
 
 
@@ -4845,7 +4844,7 @@ import matplotlib.pyplot as plt
 
 
 ```python
-# to define our display
+# To define our display
 
 def display(img, cmap = 'gray'):
     fig = plt.figure(figsize = (12,10))
@@ -4879,8 +4878,8 @@ display(cereals)
 
 
 ```python
-# brute force matching
-# orb descriptor
+# Brute Force (BF) Matching
+# Orb descriptor
 
 orb = cv2.ORB_create()
 
@@ -4890,8 +4889,7 @@ kp2, des2 = orb.detectAndCompute(cereals, mask=None)
 
 
 ```python
-# Norm Hamming method
-# bf is brute force
+# Norm Hamming Method
 
 bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck = True)
 matches = bf.match(des1, des2)
@@ -4910,7 +4908,7 @@ kix_matches = cv2.drawMatches(kix, kpt1, cereals, kpt2, matches[:25], None, flag
 
 ```python
 display(kix_matches)
-# we see that some letters match, but not images
+# We see that some letters match, but not the images.
 ```
 
 
@@ -4920,7 +4918,7 @@ display(kix_matches)
 
 ```python
 # in terminal: pip install opencv-contrib-python
-# we will run sift to 
+# Run sift:
 sift = cv2.SIFT_create()
 ```
 
@@ -4932,15 +4930,15 @@ kp2, des2 = sift.detectAndCompute(cereals, None)
 
 
 ```python
-# knn is known nearest neighbor
+# KNN (known nearest neighbor)
 bf = cv2.BFMatcher()
 matches = bf.knnMatch(des1, des2, k=2)
 ```
 
 
 ```python
-# a good match should be clustered together
-# if the matched distance is less than 75% of the previous match, it is a a good distance
+# A good match should be clustered together
+# If the matched distance is less than 75% of the previous match, it is a a good distance.
 good = []
 
 for match1, match2 in matches:
@@ -4977,7 +4975,7 @@ display(sift_matches)
 
 
 ```python
-# one more method for matching, faster than sift but finds good matches (not the best)
+# One more method for matching, faster than sift but finds good matches (not the best)
 sift = cv2.SIFT_create()
 kp1, des1 = sift.detectAndCompute(kix, None)
 kp2, des2 = sift.detectAndCompute(cereals, None)
@@ -4992,7 +4990,7 @@ search_params = dict(checks=50)
 
 
 ```python
-# to identify features in both the Kix and cereals images and trying to match them
+# To identify features in both the Kix and cereals images and trying to match them:
 
 flann = cv2.FlannBasedMatcher(index_params, search_params)
 
@@ -5009,7 +5007,7 @@ for match1, match2 in matches:
 ```python
 flann_matches = cv2.drawMatchesKnn(kix, kp1, cereals, kp2, good, None, flags = 0)
 display(flann_matches)
-# Looks good
+# Looks good!
 ```
 
 
@@ -5018,7 +5016,7 @@ display(flann_matches)
 
 
 ```python
-# now let's add a mask
+# Now let's add a mask:
 
 sift = cv2.SIFT_create()
 
@@ -5049,7 +5047,7 @@ matchesMask = [(0, 0) for i in range(len(matches))]
 
 
 ```python
-# to reduce the distance between our features to get better matches:
+# To reduce the distance between our features and get better matches:
 
 for i, (match1, match2) in enumerate(matches):
     if match1.distance < 0.75*match2.distance:
@@ -5068,8 +5066,8 @@ flann_matches = cv2.drawMatchesKnn(kix, kp1, cereals, kp2, matches, None, **draw
 
 display(flann_matches)
 
-# we can see all of the unique features that we have identified on the kix box and all of the cereal boxes
-# we were able to match it to one box
+# We can see all of the unique features that we have identified on the Kix box and all of the cereal boxes.
+# We were able to match it to one box.
 ```
 
 
@@ -5104,8 +5102,8 @@ import matplotlib.pyplot as plt
 
 
 ```python
-# To detect objects in an image
-# We need a training (single sunflower) and testing (field of sunflowers) set
+# To detect objects in an image,
+# we need a training (single sunflower) and testing (field of sunflowers) set
 
 full = cv2.imread("Training_Sunflower_single.jpg")
 ```
@@ -5171,14 +5169,14 @@ print("Training image shape:", test.shape)
 
 
 ```python
-# Let's make a variable to save the methods that we will try
+# Let's make a variable to save the methods that we will try:
 methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR', 'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
 
 ```
 
 
 ```python
-# To try to match and create a heatmap around pixels
+# To try to match and create a heatmap around pixels:
 for m in methods:
     
     test_copy = test.copy()
@@ -5188,13 +5186,13 @@ for m in methods:
     
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     
-    # to draw a rectangle on our picture that is being matched
-    # we have to define that the top left is hte min location
+    # To draw a rectangle on our picture that is being matched,
+    # we must define that the top left is the min location.
     if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
         top_left = min_loc
     else:
         top_left = max_loc
-  # To use the top left and add width and height to the box being drawn
+  # To use the top left and add width and height to the box being drawn:
     height, width, channels = full.shape
     bottom_right = (top_left[0] + width, top_left[1] + height)
     
